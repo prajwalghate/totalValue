@@ -77,23 +77,28 @@ function App() {
 	}
 
 	const connectWallet = async () => {
-		try {
-			if (!ethereum) {
-				sethaveMetamask(false);
+		if (ethereum.networkVersion == 80001) {
+			try {
+				if (!ethereum) {
+					sethaveMetamask(false);
+				}
+				// console.log(ethereum.networkVersion, "window.ethereum.networkVersion");
+				const accounts = await ethereum.request({
+					method: "eth_requestAccounts",
+				});
+				let balance = await provider.getBalance(accounts[0]);
+				let bal = ethers.utils.formatEther(balance);
+				setAccountAddress(accounts[0]);
+				setAccountBalance(bal);
+				setIsConnected(true);
+				getDecimal();
+				getTotal();
+				getTotalContributors();
+			} catch (error) {
+				setIsConnected(false);
 			}
-			const accounts = await ethereum.request({
-				method: "eth_requestAccounts",
-			});
-			let balance = await provider.getBalance(accounts[0]);
-			let bal = ethers.utils.formatEther(balance);
-			setAccountAddress(accounts[0]);
-			setAccountBalance(bal);
-			setIsConnected(true);
-			getDecimal();
-			getTotal();
-			getTotalContributors();
-		} catch (error) {
-			setIsConnected(false);
+		} else {
+			alert("Please connect to Matic Mumbai Testnet");
 		}
 	};
 
