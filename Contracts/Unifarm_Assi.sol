@@ -5,7 +5,7 @@ contract Unifarm_assi{
     int256 private  total;
     uint256 private totalContributers;
     mapping(address => int256[]) private accounts;
-    uint8 private _decimals = 9;
+    uint8 private immutable _decimals = 9;
 
 
     /** @notice Add the number t total

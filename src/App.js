@@ -158,12 +158,12 @@ function App() {
 										</p>
 									</div>
 									<div className="card-row">
-										<h3>Total Till Now:</h3>
-										<p>{total}</p>
+										<h3>Total Value:</h3>
+										<p className="textInt">{total}</p>
 									</div>
 									<div className="card-row">
-										<h3>Total Contributers:</h3>
-										<p>{totalContributers}</p>
+										<h3>Total Wallets:</h3>
+										<p className="textInt">{totalContributers}</p>
 									</div>
 								</div>
 								{loading ? (
@@ -199,6 +199,8 @@ function App() {
 											height: 300,
 										}}
 									>
+										<div className="loader">Enter the number to be added</div>
+
 										<input
 											style={{ width: "70%", height: " 15%" }}
 											value={number}

@@ -60,6 +60,12 @@ code {
 	color: darkturquoise;
 }
 
+.textInt {
+	font-size: xx-large;
+	color: black;
+	font-weight: 400;
+}
+
 .btn {
 	background-color: #61dafb;
 	padding: 20px 40px;
